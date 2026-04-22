@@ -4,9 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Billingpro - Enterprise AC Service</title>
-    <!-- Tailwind CSS via CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Lucide Icons via CDN -->
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
         .fade-in { animation: fadeIn 0.3s ease-in-out; }
@@ -35,17 +33,12 @@
 </head>
 <body class="bg-slate-50 font-sans text-slate-800 overflow-hidden relative">
 
-    <!-- Container untuk Notifikasi Toast -->
     <div id="toast-container" class="fixed bottom-4 right-4 z-[400] flex flex-col gap-2"></div>
 
-    <!-- ========================================== -->
-    <!-- VIEW 0: HALAMAN LOGIN                      -->
-    <!-- ========================================== -->
     <div id="view-login" class="fixed inset-0 z-[200] bg-slate-900 flex items-center justify-center fade-in">
         <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1621905252507-b35492cc74b4?q=80&w=2069&auto=format&fit=crop')] bg-cover bg-center opacity-10"></div>
         
         <div class="bg-white p-8 sm:p-10 rounded-3xl w-full max-w-md shadow-2xl relative z-10 mx-4">
-            <!-- LOGO DENGAN FUNGSI RAHASIA (Klik 3x) -->
             <div class="text-center mb-8 select-none cursor-pointer" onclick="revealOwner()">
                 <div class="bg-blue-600 w-16 h-16 rounded-2xl mx-auto flex items-center justify-center mb-4 shadow-lg shadow-blue-200">
                     <i data-lucide="wrench" class="w-8 h-8 text-white"></i>
@@ -102,9 +95,6 @@
         </div>
     </div>
 
-    <!-- ========================================== -->
-    <!-- VIEW 0.5: SUPER ADMIN DASHBOARD (PEMILIK)  -->
-    <!-- ========================================== -->
     <div id="app-superadmin" class="hidden h-screen w-full fade-in pt-0">
         <aside class="w-64 bg-slate-900 text-slate-300 flex flex-col shadow-xl flex-shrink-0 relative z-20">
             <div class="p-6 border-b border-slate-800">
@@ -165,7 +155,6 @@
             </header>
 
             <div class="flex-1 overflow-auto p-8 relative">
-                <!-- TAB: SA DASHBOARD -->
                 <div id="view-sa-dashboard" class="sa-view-section block space-y-6 fade-in">
                     <div class="flex justify-between items-end mb-6">
                         <div>
@@ -189,7 +178,6 @@
                         </div>
                     </div>
 
-                    <!-- TABEL DAFTAR KLIEN (BISA DIKLIK) -->
                     <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden mt-6">
                         <div class="p-6 border-b border-slate-200 flex justify-between items-center bg-slate-50/50">
                             <h3 class="font-bold text-slate-800">Daftar Klien (Perusahaan AC)</h3>
@@ -261,7 +249,6 @@
                     </div>
                 </div>
 
-                <!-- TAB: SA PENGATURAN (SISTEM UTAMA SAAS) -->
                 <div id="view-sa-settings" class="sa-view-section hidden space-y-6 fade-in">
                     <div class="flex justify-between items-end mb-6">
                         <div>
@@ -307,9 +294,6 @@
         </main>
     </div>
 
-    <!-- ========================================== -->
-    <!-- VIEW 1: ADMIN DASHBOARD (KLIEN/BENGKEL)    -->
-    <!-- ========================================== -->
     <div id="app-admin" class="hidden h-screen w-full fade-in pt-0">
         <aside class="w-64 bg-slate-900 text-slate-300 flex flex-col shadow-xl flex-shrink-0 relative z-20">
             <div class="p-6 border-b border-slate-800">
@@ -380,7 +364,6 @@
 
             <div class="flex-1 overflow-auto p-8 relative">
                 
-                <!-- TAB: DASHBOARD ADMIN -->
                 <div id="view-dashboard" class="admin-view-section block space-y-6 fade-in">
                     <div class="flex justify-between items-end mb-6">
                         <div>
@@ -408,7 +391,6 @@
                     </div>
 
                     <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-6">
-                        <!-- RECENT ORDERS -->
                         <div class="lg:col-span-2 bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex flex-col">
                             <div class="p-6 border-b border-slate-200 flex justify-between items-center bg-slate-50/50">
                                 <h3 class="font-bold text-slate-800">Order & Billing Terbaru</h3>
@@ -425,21 +407,18 @@
                                         </tr>
                                     </thead>
                                     <tbody id="recent-orders-body" class="divide-y divide-slate-100 text-sm">
-                                        <!-- Data will be populated by Firebase -->
                                         <tr><td colspan="4" class="p-4 text-center text-slate-400">Memuat data pesanan...</td></tr>
                                     </tbody>
                                 </table>
                             </div>
                         </div>
 
-                        <!-- TECHNICIAN STATUS -->
                         <div class="bg-white rounded-2xl border border-slate-200 shadow-sm flex flex-col">
                             <div class="p-6 border-b border-slate-200 bg-slate-50/50 flex justify-between items-center">
                                 <h3 class="font-bold text-slate-800">Status Teknisi</h3>
                                 <span class="bg-blue-100 text-blue-700 text-xs font-bold px-2 py-1 rounded-full">6 Total</span>
                             </div>
                             <div class="p-4 flex-1 overflow-y-auto space-y-3 max-h-[400px]">
-                                <!-- Tech 1 -->
                                 <div onclick="openModal('modal-tech-detail')" class="p-3 rounded-xl border border-slate-100 bg-slate-50 flex items-start gap-3 cursor-pointer hover:border-blue-400 hover:shadow-sm transition-all">
                                     <div class="relative">
                                         <div class="w-10 h-10 rounded-full bg-slate-200 flex items-center justify-center font-bold text-slate-600 border border-slate-300">AP</div>
@@ -450,7 +429,6 @@
                                         <span class="px-2 py-0.5 rounded-full text-[10px] font-medium bg-green-100 text-green-700 inline-block mt-1">Tersedia</span>
                                     </div>
                                 </div>
-                                <!-- Tech 2 -->
                                 <div onclick="openModal('modal-tech-detail')" class="p-3 rounded-xl border border-slate-100 bg-slate-50 flex items-start gap-3 cursor-pointer hover:border-blue-400 hover:shadow-sm transition-all">
                                     <div class="relative">
                                         <div class="w-10 h-10 rounded-full bg-slate-200 flex items-center justify-center font-bold text-slate-600 border border-slate-300">BH</div>
@@ -466,11 +444,9 @@
                     </div>
                 </div>
 
-                <!-- TAB: TEKNISI ADMIN (HRD) -->
                 <div id="view-technicians" class="admin-view-section hidden fade-in">
                     <h2 class="text-2xl font-bold text-slate-800 mb-6">Manajemen Teknisi (HRD)</h2>
                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                        <!-- Kartu Teknisi Bisa Diklik -->
                         <div onclick="openModal('modal-tech-detail')" class="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 flex flex-col items-center text-center cursor-pointer hover:border-blue-400 hover:shadow-md transition-all">
                             <div class="w-20 h-20 rounded-full bg-slate-100 flex items-center justify-center font-bold text-2xl text-slate-600 mb-4 border-4 border-slate-50 shadow-sm">AP</div>
                             <h3 class="font-bold text-lg text-slate-800">Andi Pratama</h3>
@@ -481,8 +457,8 @@
                                 <div><p class="text-xs text-slate-500">Rating</p><p class="font-bold text-amber-500">⭐ 4.8</p></div>
                             </div>
                         </div>
-                        <!-- Add New Tech Card -->
-                        <div class="bg-slate-50 rounded-2xl border-2 border-dashed border-slate-300 shadow-sm p-6 flex flex-col items-center justify-center text-center hover:bg-slate-100 hover:border-blue-400 hover:text-blue-600 transition-colors cursor-pointer min-h-[250px]">
+                        
+                        <div onclick="openModal('modal-add-tech')" class="bg-slate-50 rounded-2xl border-2 border-dashed border-slate-300 shadow-sm p-6 flex flex-col items-center justify-center text-center hover:bg-slate-100 hover:border-blue-400 hover:text-blue-600 transition-colors cursor-pointer min-h-[250px]">
                             <div class="w-14 h-14 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center mb-3">
                                 <i data-lucide="plus" class="w-8 h-8"></i>
                             </div>
@@ -491,7 +467,6 @@
                     </div>
                 </div>
 
-                <!-- TAB: ORDER & BILLING (TABEL KOMPREHENSIF) -->
                 <div id="view-billing" class="admin-view-section hidden space-y-6 fade-in">
                     <div class="flex justify-between items-end mb-6">
                         <div>
@@ -504,7 +479,6 @@
                     </div>
 
                     <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
-                        <!-- Toolbar / Filters -->
                         <div class="p-4 border-b border-slate-200 bg-slate-50 flex flex-col sm:flex-row gap-4 justify-between items-center">
                             <div class="flex gap-4 w-full sm:w-auto">
                                 <div class="relative w-full sm:w-64">
@@ -523,7 +497,6 @@
                             </button>
                         </div>
 
-                        <!-- Data Table -->
                         <div class="overflow-x-auto">
                             <table class="w-full text-left border-collapse min-w-[800px]">
                                 <thead>
@@ -538,7 +511,6 @@
                                     </tr>
                                 </thead>
                                 <tbody id="billing-orders-body" class="divide-y divide-slate-100 text-sm">
-                                    <!-- Data will be populated by Firebase -->
                                     <tr><td colspan="7" class="p-4 text-center text-slate-400">Memuat data dari database...</td></tr>
                                 </tbody>
                             </table>
@@ -546,11 +518,9 @@
                     </div>
                 </div>
 
-                <!-- TAB: CHAT ADMIN -->
                 <div id="view-chat" class="admin-view-section hidden fade-in h-[calc(100vh-140px)]">
                     <h2 class="text-2xl font-bold text-slate-800 mb-6">Chat & Pesan Teknisi</h2>
                     <div class="flex h-full bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
-                        <!-- Chat List (Left) -->
                         <div class="w-1/3 border-r border-slate-200 flex flex-col bg-slate-50 shrink-0">
                             <div class="p-4 border-b border-slate-200 bg-white">
                                 <div class="relative">
@@ -559,7 +529,6 @@
                                 </div>
                             </div>
                             <div class="flex-1 overflow-y-auto">
-                                <!-- Chat Item Active -->
                                 <div class="p-4 border-b border-slate-100 cursor-pointer bg-blue-50 border-l-4 border-l-blue-600 flex gap-3">
                                     <div class="relative shrink-0">
                                         <div class="w-10 h-10 rounded-full bg-blue-200 text-blue-700 flex items-center justify-center font-bold">AP</div>
@@ -573,7 +542,6 @@
                                         <p class="text-xs text-slate-800 font-semibold truncate">Pak, pipa kurang 2 meter.</p>
                                     </div>
                                 </div>
-                                <!-- Chat Item -->
                                 <div class="p-4 border-b border-slate-100 cursor-pointer hover:bg-slate-100 transition-colors flex gap-3">
                                     <div class="relative shrink-0">
                                         <div class="w-10 h-10 rounded-full bg-slate-200 text-slate-600 flex items-center justify-center font-bold">BH</div>
@@ -589,9 +557,7 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- Chat Area (Right) -->
                         <div class="flex-1 flex flex-col bg-white">
-                            <!-- Chat Header -->
                             <div class="p-4 border-b border-slate-200 flex items-center justify-between bg-white shrink-0">
                                 <div class="flex items-center gap-3">
                                     <div class="w-10 h-10 rounded-full bg-blue-200 text-blue-700 flex items-center justify-center font-bold">AP</div>
@@ -602,24 +568,20 @@
                                 </div>
                                 <button class="p-2 text-slate-400 hover:text-blue-600 transition-colors"><i data-lucide="more-vertical" class="w-5 h-5"></i></button>
                             </div>
-                            <!-- Chat Messages -->
                             <div class="flex-1 overflow-y-auto p-6 space-y-4 bg-slate-50">
                                 <div class="text-center"><span class="text-[10px] text-slate-400 bg-slate-200/50 px-2 py-1 rounded-full">Hari ini</span></div>
-                                <!-- Msg Admin -->
                                 <div class="flex justify-end">
                                     <div class="bg-blue-600 text-white p-3 rounded-2xl rounded-tr-sm max-w-[75%] shadow-sm">
                                         <p class="text-sm">Andi, jangan lupa minta tanda tangan Bpk. Ahmad kalau sudah selesai ya.</p>
                                         <p class="text-[10px] text-blue-200 text-right mt-1">09:15 <i data-lucide="check-check" class="w-3 h-3 inline"></i></p>
                                     </div>
                                 </div>
-                                <!-- Msg Tech -->
                                 <div class="flex justify-start">
                                     <div class="bg-white border border-slate-200 p-3 rounded-2xl rounded-tl-sm max-w-[75%] shadow-sm">
                                         <p class="text-sm text-slate-700">Siap pak. Ini pipa kurang 2 meter, saya beli dulu ya.</p>
                                         <p class="text-[10px] text-slate-400 text-right mt-1">10:42</p>
                                     </div>
                                 </div>
-                                <!-- Msg Admin -->
                                 <div class="flex justify-end">
                                     <div class="bg-blue-600 text-white p-3 rounded-2xl rounded-tr-sm max-w-[75%] shadow-sm">
                                         <p class="text-sm">Boleh Andi, silakan beli dulu. Nanti notanya difoto dan masukkan ke tambahan material ya.</p>
@@ -627,7 +589,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <!-- Chat Input -->
                             <div class="p-4 border-t border-slate-200 bg-white flex items-center gap-3 shrink-0">
                                 <button class="text-slate-400 hover:text-blue-600 transition-colors"><i data-lucide="paperclip" class="w-5 h-5"></i></button>
                                 <button class="text-slate-400 hover:text-blue-600 transition-colors"><i data-lucide="image" class="w-5 h-5"></i></button>
@@ -642,13 +603,9 @@
         </main>
     </div>
 
-    <!-- ========================================== -->
-    <!-- VIEW 2: TEKNISI APP (MOBILE FIRST)         -->
-    <!-- ========================================== -->
     <div id="app-tech" class="hidden w-full h-screen bg-slate-800 flex items-center justify-center pt-0 pb-4 px-4 sm:p-16">
         <div class="w-full max-w-[400px] h-full sm:max-h-[850px] bg-slate-50 sm:rounded-[2.5rem] sm:border-[8px] border-slate-900 relative overflow-hidden flex flex-col mobile-frame fade-in">
             
-            <!-- HEADER UTAMA TEKNISI -->
             <div id="tech-main-header" class="bg-blue-600 text-white p-5 rounded-b-3xl shadow-md z-10 shrink-0 block">
                 <div class="flex justify-between items-center mb-4">
                     <div>
@@ -665,7 +622,6 @@
                 </button>
             </div>
 
-            <!-- TUGAS / HOME SECTION (TEKNISI) -->
             <div id="tech-view-home" class="tech-view-section flex-1 overflow-y-auto p-5 pb-28 space-y-6 bg-slate-50 block">
                 <div>
                     <h3 class="text-xs font-bold text-slate-400 mb-3 uppercase tracking-widest">Sedang Dikerjakan</h3>
@@ -696,9 +652,7 @@
                 </div>
             </div>
 
-            <!-- CHAT SECTION (TEKNISI) -->
             <div id="tech-view-chat" class="tech-view-section flex-1 bg-slate-50 hidden flex-col pb-16">
-                <!-- Header Chat Khusus -->
                 <div class="p-4 border-b border-slate-200 bg-white flex items-center gap-3 shrink-0 shadow-sm">
                     <div class="w-10 h-10 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center font-bold">AD</div>
                     <div>
@@ -706,25 +660,20 @@
                         <p class="text-[10px] text-green-500 font-bold">Online</p>
                     </div>
                 </div>
-                
-                <!-- Area Pesan -->
                 <div class="flex-1 overflow-y-auto p-4 space-y-4">
                     <div class="text-center"><span class="text-[10px] text-slate-400 bg-slate-200/50 px-2 py-1 rounded-full">Hari ini</span></div>
-                    <!-- Msg Admin -->
                     <div class="flex justify-start">
                         <div class="bg-white border border-slate-200 p-3 rounded-2xl rounded-tl-sm max-w-[85%] shadow-sm">
                             <p class="text-sm text-slate-700">Andi, jangan lupa minta tanda tangan Bpk. Ahmad kalau sudah selesai ya.</p>
                             <p class="text-[10px] text-slate-400 text-right mt-1">09:15</p>
                         </div>
                     </div>
-                    <!-- Msg Tech -->
                     <div class="flex justify-end">
                         <div class="bg-blue-600 text-white p-3 rounded-2xl rounded-tr-sm max-w-[85%] shadow-sm">
                             <p class="text-sm">Siap pak. Ini pipa kurang 2 meter, saya beli dulu ya.</p>
                             <p class="text-[10px] text-blue-200 text-right mt-1">10:42 <i data-lucide="check-check" class="w-3 h-3 inline"></i></p>
                         </div>
                     </div>
-                    <!-- Msg Admin -->
                     <div class="flex justify-start">
                         <div class="bg-white border border-slate-200 p-3 rounded-2xl rounded-tl-sm max-w-[85%] shadow-sm">
                             <p class="text-sm text-slate-700">Boleh Andi, silakan beli dulu. Notanya difoto dan masukkan ke tambahan material ya.</p>
@@ -732,8 +681,6 @@
                         </div>
                     </div>
                 </div>
-                
-                <!-- Input Panel -->
                 <div class="p-3 bg-white border-t border-slate-200 flex items-center gap-2 shrink-0">
                     <button class="text-slate-400 p-1 hover:text-blue-600"><i data-lucide="paperclip" class="w-5 h-5"></i></button>
                     <input type="text" placeholder="Ketik pesan..." class="flex-1 bg-slate-100 border border-slate-200 rounded-full px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
@@ -741,12 +688,10 @@
                 </div>
             </div>
 
-            <!-- Tombol Floating Action (FAB) Selesai Job -->
             <button id="fab-btn" class="absolute bottom-24 right-5 w-14 h-14 bg-amber-500 text-white rounded-full flex items-center justify-center shadow-[0_8px_20px_-4px_rgba(245,158,11,0.6)] border-2 border-white transform transition active:scale-95 z-20" onclick="openModal('modal-tech-input')">
                 <i data-lucide="pen-tool" class="w-6 h-6"></i>
             </button>
 
-            <!-- BOTTOM NAVIGATION (DIPERBARUI) -->
             <div class="absolute bottom-0 w-full bg-white border-t border-slate-200 flex justify-between px-4 pt-2 pb-safe z-30">
                 <button onclick="switchTechTab('home')" id="btn-tech-home" class="tech-menu-btn flex flex-col items-center gap-1 text-blue-600 w-16">
                     <div class="p-1.5 rounded-lg bg-blue-50"><i data-lucide="clipboard-list" class="w-5 h-5"></i></div>
@@ -769,11 +714,6 @@
     </div>
 
 
-    <!-- ========================================== -->
-    <!-- MODALS (POP-UPS)                           -->
-    <!-- ========================================== -->
-
-    <!-- 1. MODAL ADMIN: TAMBAH ORDER BARU (LENGKAP DGN CEKLIS 4 KATEGORI) -->
     <div id="modal-add-order" class="fixed inset-0 z-[300] bg-slate-900/50 hidden items-center justify-center backdrop-blur-sm transition-all py-4 px-2">
         <div class="bg-white rounded-3xl w-full max-w-3xl shadow-2xl modal-enter overflow-hidden flex flex-col max-h-full">
             <div class="px-6 py-4 border-b border-slate-200 bg-slate-50 flex justify-between items-center">
@@ -838,9 +778,8 @@
                     </div>
 
                     <div class="pt-4 border-t border-slate-100">
-                        <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-3">3. Rincian Pekerjaan (Ceklis)</h4>
+                        <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-3">3. Rincian Pekerjaan (Bisa pilih lebih dari satu)</h4>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 bg-slate-50 p-4 rounded-xl border border-slate-200">
-                            <!-- Kategori 1: Perawatan / Cuci -->
                             <div>
                                 <h5 class="text-sm font-bold text-slate-800 mb-2 flex items-center gap-1"><i data-lucide="droplet" class="w-4 h-4 text-blue-500"></i> Perawatan / Cuci</h5>
                                 <div class="space-y-2">
@@ -851,7 +790,6 @@
                                 </div>
                             </div>
                             
-                            <!-- Kategori 2: Freon -->
                             <div>
                                 <h5 class="text-sm font-bold text-slate-800 mb-2 flex items-center gap-1"><i data-lucide="wind" class="w-4 h-4 text-sky-500"></i> Penanganan Freon</h5>
                                 <div class="space-y-2">
@@ -861,7 +799,6 @@
                                 </div>
                             </div>
 
-                            <!-- Kategori 3: Instalasi -->
                             <div>
                                 <h5 class="text-sm font-bold text-slate-800 mb-2 flex items-center gap-1"><i data-lucide="arrow-left-right" class="w-4 h-4 text-amber-500"></i> Bongkar & Pasang</h5>
                                 <div class="space-y-2">
@@ -871,7 +808,6 @@
                                 </div>
                             </div>
 
-                            <!-- Kategori 4: Perbaikan/Sparepart -->
                             <div>
                                 <h5 class="text-sm font-bold text-slate-800 mb-2 flex items-center gap-1"><i data-lucide="tool" class="w-4 h-4 text-red-500"></i> Perbaikan & Sparepart</h5>
                                 <div class="space-y-2">
@@ -894,7 +830,6 @@
         </div>
     </div>
 
-    <!-- 2. MODAL ADMIN: DETAIL PROFIL TEKNISI (HRD, TRACKING, PAYROLL) -->
     <div id="modal-tech-detail" class="fixed inset-0 z-[300] bg-slate-900/60 hidden items-center justify-center backdrop-blur-sm transition-all py-4 px-2">
         <div class="bg-white rounded-3xl w-full max-w-5xl shadow-2xl modal-enter overflow-hidden flex flex-col max-h-full">
             <div class="px-6 py-4 border-b border-slate-200 bg-slate-50 flex justify-between items-center shrink-0">
@@ -906,7 +841,6 @@
             <div class="p-6 overflow-y-auto flex-1 bg-slate-50">
                 <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
                     
-                    <!-- Kiri: Profil & Kehadiran -->
                     <div class="space-y-6">
                         <div class="bg-white p-5 rounded-2xl border border-slate-200 text-center shadow-sm relative">
                             <button class="absolute top-3 right-3 text-slate-400 hover:text-blue-600" title="Edit Profil"><i data-lucide="edit" class="w-4 h-4"></i></button>
@@ -948,7 +882,6 @@
                         </div>
                     </div>
 
-                    <!-- Kanan: Keuangan, Riwayat, Tracking, Alat -->
                     <div class="lg:col-span-2 space-y-6">
                         <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm">
                             <div class="flex justify-between items-center mb-4">
@@ -1016,8 +949,6 @@
         </div>
     </div>
 
-
-    <!-- 3. MODAL TEKNISI: LAPORAN HASIL PEKERJAAN (LENGKAP DGN DATALIST MATERIAL) -->
     <div id="modal-tech-input" class="fixed inset-0 z-[300] bg-slate-900/80 hidden items-end sm:items-center justify-center backdrop-blur-sm transition-all sm:py-4">
         <div class="bg-white rounded-t-3xl sm:rounded-3xl w-full max-w-[400px] shadow-2xl modal-enter overflow-hidden flex flex-col max-h-[90vh]">
             <div class="px-5 py-4 border-b border-slate-200 bg-blue-600 text-white flex justify-between items-center">
@@ -1035,8 +966,8 @@
                     <div>
                         <label class="block text-sm font-bold text-slate-700 mb-2">Tindakan yang Selesai:</label>
                         <div class="bg-white border border-slate-200 rounded-xl p-3 space-y-3">
-                            <label class="flex items-start gap-3 cursor-pointer"><input type="checkbox" class="mt-1 w-5 h-5" checked> <span class="text-sm font-medium text-slate-700">Cuci AC Split Selesai</span></label>
-                            <label class="flex items-start gap-3 cursor-pointer"><input type="checkbox" class="mt-1 w-5 h-5" checked> <span class="text-sm font-medium text-slate-700">Isi Freon R32 (Full)</span></label>
+                            <label class="flex items-start gap-3 cursor-pointer"><input type="checkbox" class="mt-1 w-5 h-5 text-blue-600 rounded border-slate-300" checked> <span class="text-sm font-medium text-slate-700">Cuci AC Split Selesai</span></label>
+                            <label class="flex items-start gap-3 cursor-pointer"><input type="checkbox" class="mt-1 w-5 h-5 text-blue-600 rounded border-slate-300" checked> <span class="text-sm font-medium text-slate-700">Isi Freon R32 (Full)</span></label>
                         </div>
                     </div>
                     
@@ -1054,9 +985,6 @@
                                     <option value="Kapasitor Kompresor 15uF"></option>
                                     <option value="Kapasitor Kompresor 20uF"></option>
                                     <option value="Kapasitor Kompresor 25uF"></option>
-                                    <option value="Kapasitor Kompresor 30uF"></option>
-                                    <option value="Kapasitor Kipas (Fan) 1.5uF"></option>
-                                    <option value="Kapasitor Kipas (Fan) 2.0uF"></option>
                                     <option value="Modul PCB Universal"></option>
                                     <option value="Termistor (Sensor Suhu)"></option>
                                     <option value="Isolasi Pipa (Duct Tape)"></option>
@@ -1082,7 +1010,6 @@
         </div>
     </div>
 
-    <!-- 4. MODAL ADMIN: CETAK INVOICE -->
     <div id="modal-invoice" class="fixed inset-0 z-[300] bg-slate-900/60 hidden items-center justify-center backdrop-blur-sm transition-all p-4">
         <div class="bg-white rounded-xl w-full max-w-lg shadow-2xl modal-enter relative">
             <button onclick="closeModal('modal-invoice')" class="absolute top-4 right-4 text-slate-400 hover:text-slate-700 bg-slate-100 rounded-full p-1"><i data-lucide="x" class="w-5 h-5"></i></button>
@@ -1150,7 +1077,6 @@
         </div>
     </div>
 
-    <!-- 5. MODAL SUPER ADMIN: DETAIL KLIEN SAAS -->
     <div id="modal-client-detail" class="fixed inset-0 z-[300] bg-slate-900/60 hidden items-center justify-center backdrop-blur-sm transition-all py-4 px-2">
         <div class="bg-white rounded-3xl w-full max-w-4xl shadow-2xl modal-enter overflow-hidden flex flex-col max-h-full">
             <div class="px-6 py-4 border-b border-slate-200 bg-purple-50 flex justify-between items-center shrink-0">
@@ -1204,7 +1130,52 @@
         </div>
     </div>
 
-    <!-- JAVASCRIPT LOGIC BROWSER UI -->
+    <div id="modal-add-tech" class="fixed inset-0 z-[300] bg-slate-900/50 hidden items-center justify-center backdrop-blur-sm transition-all py-4 px-2">
+        <div class="bg-white rounded-3xl w-full max-w-2xl shadow-2xl modal-enter overflow-hidden flex flex-col max-h-full">
+            <div class="px-6 py-4 border-b border-slate-200 bg-slate-50 flex justify-between items-center">
+                <h3 class="text-lg font-bold text-slate-800 flex items-center gap-2">
+                    <i data-lucide="user-plus" class="w-5 h-5 text-blue-600"></i> Tambah Teknisi Baru
+                </h3>
+                <button onclick="closeModal('modal-add-tech')" class="text-slate-400 hover:text-red-500 transition-colors"><i data-lucide="x" class="w-6 h-6"></i></button>
+            </div>
+            
+            <div class="p-6 overflow-y-auto flex-1 bg-white">
+                <form class="space-y-5">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-semibold text-slate-700 mb-1">Nama Lengkap</label>
+                            <input type="text" placeholder="Nama Teknisi" class="w-full px-4 py-2 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:outline-none text-sm" required>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold text-slate-700 mb-1">No. WhatsApp/HP</label>
+                            <input type="tel" placeholder="0812-xxxx" class="w-full px-4 py-2 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:outline-none text-sm" required>
+                        </div>
+                        <div class="sm:col-span-2">
+                            <label class="block text-sm font-semibold text-slate-700 mb-1">Alamat Domisili</label>
+                            <textarea rows="2" placeholder="Alamat tinggal teknisi" class="w-full px-4 py-2 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:outline-none text-sm"></textarea>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold text-slate-700 mb-1">Hari Libur Mingguan</label>
+                            <select class="w-full px-4 py-2 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:outline-none text-sm">
+                                <option>Senin</option><option>Selasa</option><option>Rabu</option><option>Kamis</option><option>Jumat</option><option>Sabtu</option><option>Minggu</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold text-slate-700 mb-1">Persentase Komisi (%)</label>
+                            <input type="number" placeholder="Cth: 30" class="w-full px-4 py-2 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:outline-none text-sm">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="px-6 py-4 border-t border-slate-200 bg-slate-50 flex justify-end gap-3 shrink-0">
+                <button onclick="closeModal('modal-add-tech')" class="px-5 py-2.5 text-sm font-bold text-slate-600 hover:bg-slate-200 rounded-xl transition-colors">Batal</button>
+                <button onclick="closeModal('modal-add-tech'); showToast('Teknisi berhasil ditambahkan!', 'success')" class="px-5 py-2.5 text-sm font-bold text-white bg-blue-600 hover:bg-blue-700 rounded-xl transition-colors shadow-md flex items-center gap-2">
+                    <i data-lucide="save" class="w-4 h-4"></i> Simpan Data
+                </button>
+            </div>
+        </div>
+    </div>
+
     <script>
         lucide.createIcons();
 
@@ -1280,10 +1251,7 @@
         }
 
         function switchTechTab(tabName) {
-            // Sembunyikan semua tab Teknisi
             document.querySelectorAll('.tech-view-section').forEach(el => { el.classList.add('hidden'); el.classList.remove('block', 'flex'); });
-            
-            // Reset gaya tombol navigasi bawah
             document.querySelectorAll('.tech-menu-btn').forEach(btn => { 
                 btn.classList.remove('text-blue-600'); 
                 btn.classList.add('text-slate-400');
@@ -1292,12 +1260,10 @@
                 btn.querySelector('span').classList.add('font-medium');
             });
             
-            // Tampilkan Tab yang diklik (jika chat pakai flex untuk layout chat)
             const targetView = document.getElementById('tech-view-' + tabName);
             targetView.classList.remove('hidden'); 
             targetView.classList.add(tabName === 'chat' ? 'flex' : 'block');
             
-            // Sorot ikon navigasi bawah
             const activeBtn = document.getElementById('btn-tech-' + tabName);
             activeBtn.classList.remove('text-slate-400'); 
             activeBtn.classList.add('text-blue-600');
@@ -1305,7 +1271,6 @@
             activeBtn.querySelector('span').classList.remove('font-medium');
             activeBtn.querySelector('span').classList.add('font-bold');
 
-            // Logika UI Tambahan (Sembunyikan Header dan Floating Button saat masuk chat)
             const fab = document.getElementById('fab-btn');
             const mainHeader = document.getElementById('tech-main-header');
             if (tabName === 'chat') { 
@@ -1327,16 +1292,6 @@
         }
 
         // FUNGSI BUKA TUTUP MODAL
-        function openModal(modalId) {
-            document.getElementById(modalId).classList.remove('hidden');
-            document.getElementById(modalId).classList.add('flex');
-        }
-        function closeModal(modalId) {
-            document.getElementById(modalId).classList.add('hidden');
-            document.getElementById(modalId).classList.remove('flex');
-        }
-    </script>
-
     <!-- ========================================== -->
     <!-- LOGIKA FIREBASE (REALTIME DATABASE / BAAS) -->
     <!-- ========================================== -->
@@ -1346,16 +1301,17 @@
         import { getAuth, signInAnonymously, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
         import { getFirestore, collection, addDoc, onSnapshot, query } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
-        // Konfigurasi Database - Biarkan format ini, akan disuplai secara otomatis dari server backend
-        const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {
+        // Konfigurasi Firebase ANDA
+        const firebaseConfig = {
             apiKey: "AIzaSyAhx_HVsROgQlMBUFkVLCmwxI4PWThkGnQ",
-          authDomain: "billing-pro-enterprise.firebaseapp.com",
-          projectId: "billing-pro-enterprise",
-          storageBucket: "billing-pro-enterprise.firebasestorage.app",
-          messagingSenderId: "363091280899",
-          appId: "1:363091280899:web:2c2f486907265bca9b7a36",
-          measurementId: "G-N2MPCNH75N"
+            authDomain: "billing-pro-enterprise.firebaseapp.com",
+            projectId: "billing-pro-enterprise",
+            storageBucket: "billing-pro-enterprise.firebasestorage.app",
+            messagingSenderId: "363091280899",
+            appId: "1:363091280899:web:2c2f486907265bca9b7a36",
+            measurementId: "G-N2MPCNH75N"
         };
+        
         const appId = typeof __app_id !== 'undefined' ? __app_id : 'billingpro-v1';
 
         let app, auth, db;
@@ -1364,16 +1320,14 @@
             auth = getAuth(app);
             db = getFirestore(app);
         } catch(e) {
-            console.log("Firebase tidak dikonfigurasi di environment ini. Mode Simulasi Aktif.");
+            console.log("Firebase belum disetting. Berjalan dalam mode Lokal/Simulasi.");
         }
 
         let currentUser = null;
 
-        // Jika Firebase berhasil dipasang, lakukan Otentikasi (Anonymous untuk Demo)
         if (auth) {
             signInAnonymously(auth).catch((error) => {
                 console.error("Gagal terhubung ke database:", error);
-                showToast("Sistem offline. Fitur tersimpan lokal.", "error");
             });
 
             onAuthStateChanged(auth, (user) => {
@@ -1412,12 +1366,11 @@
             if (!currentUser || !db) {
                 closeModal('modal-add-order');
                 document.getElementById('form-add-order').reset();
-                showToast('Simulasi: Order berhasil dibuat (Offline)', 'success');
+                showToast('Simulasi: Order berhasil dibuat (Mode Offline)', 'success');
                 return;
             }
 
             try {
-                // Sesuai aturan: MENGGUNAKAN JALUR KOLEKSI YANG DIIZINKAN (/artifacts/{appId}/public/data/{collection})
                 await addDoc(collection(db, 'artifacts', appId, 'public', 'data', 'orders'), orderData);
                 closeModal('modal-add-order');
                 document.getElementById('form-add-order').reset();
@@ -1434,7 +1387,7 @@
 
             const ordersCollection = collection(db, 'artifacts', appId, 'public', 'data', 'orders');
             
-            // onSnapshot otomatis akan menarik data secara real-time dari database jika ada orderan baru
+            // onSnapshot menarik data secara real-time
             onSnapshot(query(ordersCollection), (snapshot) => {
                 const billingTable = document.getElementById('billing-orders-body');
                 const recentTable = document.getElementById('recent-orders-body');
@@ -1480,9 +1433,8 @@
                     `;
                 });
                 
-                // Render ulang HTML ke dalam layar
                 billingTable.innerHTML = htmlContent;
-                recentTable.innerHTML = htmlContent; // Menggunakan data sama untuk simulasi tabel dashboard
+                recentTable.innerHTML = htmlContent; 
                 lucide.createIcons();
             }, (error) => {
                 console.error("Gagal memuat data realtime", error);
