@@ -212,7 +212,7 @@
                                     </tr>
                                 </thead>
                                 <tbody id="sa-client-list-body" class="divide-y divide-slate-100 text-sm">
-                                    <tr class="hover:bg-purple-50 cursor-pointer transition-colors" onclick="openModal('modal-client-detail')">
+                                    <tr class="hover:bg-purple-50 cursor-pointer transition-colors" onclick="openClientDetail('PT Maju Jaya AC', 'Budi Santoso', '0812-xxxx-xxxx', 'Aktif (Lunas)')">
                                         <td class="p-4">
                                             <p class="font-bold text-slate-800">PT Maju Jaya AC</p>
                                             <p class="text-xs text-slate-500 mt-0.5">Jakarta Selatan</p>
@@ -224,7 +224,7 @@
                                         <td class="p-4 text-center font-bold text-slate-700">6</td>
                                         <td class="p-4"><span class="px-2 py-1 rounded-full text-xs font-medium bg-emerald-100 text-emerald-700 border border-emerald-200">Aktif (Lunas)</span></td>
                                     </tr>
-                                    <tr class="hover:bg-purple-50 cursor-pointer transition-colors" onclick="openModal('modal-client-detail')">
+                                    <tr class="hover:bg-purple-50 cursor-pointer transition-colors" onclick="openClientDetail('Sinar Dingin AC', 'Hendra Wijaya', '0856-xxxx-xxxx', 'Menunggak (Blokir)')">
                                         <td class="p-4">
                                             <p class="font-bold text-slate-800">Sinar Dingin AC</p>
                                             <p class="text-xs text-slate-500 mt-0.5">Bandung Raya</p>
@@ -513,8 +513,8 @@
                                     <option>Dibatalkan</option>
                                 </select>
                             </div>
-                            <button type="button" onclick="showToast('Mengunduh Laporan Excel...', 'success')" class="flex items-center gap-2 text-sm font-semibold text-slate-600 hover:text-blue-600 transition-colors border border-slate-200 bg-white px-3 py-2 rounded-lg shadow-sm w-full sm:w-auto justify-center">
-                                <i data-lucide="download" class="w-4 h-4"></i> Export Excel
+                            <button type="button" onclick="exportAndAskDelete()" class="flex items-center gap-2 text-sm font-semibold text-slate-600 hover:text-blue-600 transition-colors border border-slate-200 bg-white px-3 py-2 rounded-lg shadow-sm w-full sm:w-auto justify-center">
+                                <i data-lucide="download" class="w-4 h-4"></i> Export Data (CSV)
                             </button>
                         </div>
 
@@ -1144,21 +1144,21 @@
             
             <div class="p-6 overflow-y-auto flex-1 bg-slate-50">
                 <div class="flex items-center gap-4 mb-6 bg-white p-5 rounded-2xl border border-slate-200 shadow-sm">
-                    <div class="w-16 h-16 rounded-xl bg-purple-100 text-purple-600 flex items-center justify-center font-bold text-2xl border border-purple-200">MJ</div>
+                    <div id="detail-comp-avatar" class="w-16 h-16 rounded-xl bg-purple-100 text-purple-600 flex items-center justify-center font-bold text-2xl border border-purple-200">MJ</div>
                     <div class="flex-1">
-                        <h4 class="font-bold text-2xl text-slate-800">PT Maju Jaya AC</h4>
+                        <h4 id="detail-comp-name" class="font-bold text-2xl text-slate-800">PT Maju Jaya AC</h4>
                         <p class="text-sm text-slate-500">Bergabung sejak: 10 Jan 2022 • ID Klien: CL-001</p>
                     </div>
                     <div class="text-right">
-                        <span class="px-3 py-1 rounded-full text-xs font-bold border bg-emerald-100 text-emerald-700 border-emerald-200">Status: Aktif (Lunas)</span>
+                        <span id="detail-comp-status" class="px-3 py-1 rounded-full text-xs font-bold border bg-emerald-100 text-emerald-700 border-emerald-200">Status: Aktif (Lunas)</span>
                     </div>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                     <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-4">
                         <h5 class="text-xs font-bold text-slate-400 uppercase tracking-wider border-b border-slate-100 pb-2">Informasi Kontak</h5>
-                        <div><p class="text-[10px] text-slate-500 uppercase">Admin Pengelola</p><p class="font-bold text-slate-800">Budi Santoso</p></div>
-                        <div><p class="text-[10px] text-slate-500 uppercase">No. WhatsApp</p><p class="font-bold text-slate-800 flex items-center gap-2">0812-3456-7890 <button type="button" class="text-emerald-500 hover:text-emerald-600"><i data-lucide="message-circle" class="w-4 h-4"></i></button></p></div>
+                        <div><p class="text-[10px] text-slate-500 uppercase">Admin Pengelola</p><p id="detail-admin-name" class="font-bold text-slate-800">Budi Santoso</p></div>
+                        <div><p class="text-[10px] text-slate-500 uppercase">No. WhatsApp</p><p id="detail-admin-phone" class="font-bold text-slate-800 flex items-center gap-2">0812-3456-7890 <button type="button" class="text-emerald-500 hover:text-emerald-600"><i data-lucide="message-circle" class="w-4 h-4"></i></button></p></div>
                         <div><p class="text-[10px] text-slate-500 uppercase">Alamat Perusahaan</p><p class="font-medium text-slate-700 text-sm">Jl. Suka Maju No. 99, Jakarta</p></div>
                     </div>
                     <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-4">
@@ -1474,6 +1474,34 @@
             document.getElementById(modalId).classList.remove('flex');
         }
 
+        // FUNGSI BUKA DETAIL KLIEN SECARA DINAMIS
+        window.openClientDetail = function(compName, adminName, adminPhone, status) {
+            document.getElementById('detail-comp-name').innerText = compName;
+            document.getElementById('detail-admin-name').innerText = adminName;
+            document.getElementById('detail-admin-phone').innerHTML = `${adminPhone} <button type="button" class="text-emerald-500 hover:text-emerald-600"><i data-lucide="message-circle" class="w-4 h-4"></i></button>`;
+            
+            // Inisial untuk Avatar
+            let initials = compName.substring(0, 2).toUpperCase();
+            if (compName.split(' ').length > 1) {
+                initials = compName.split(' ')[0][0] + compName.split(' ')[1][0];
+            }
+            document.getElementById('detail-comp-avatar').innerText = initials.toUpperCase();
+
+            // Gaya Badge Status
+            const statusEl = document.getElementById('detail-comp-status');
+            statusEl.innerText = `Status: ${status}`;
+            if (status.includes('Lunas') || status.includes('Aktif')) {
+                statusEl.className = 'px-3 py-1 rounded-full text-xs font-bold border bg-emerald-100 text-emerald-700 border-emerald-200';
+            } else if (status.includes('Menunggak') || status.includes('Blokir')) {
+                statusEl.className = 'px-3 py-1 rounded-full text-xs font-bold border bg-red-100 text-red-700 border-red-200';
+            } else {
+                statusEl.className = 'px-3 py-1 rounded-full text-xs font-bold border bg-blue-100 text-blue-700 border-blue-200';
+            }
+
+            openModal('modal-client-detail');
+            lucide.createIcons(); 
+        }
+
         // FUNGSI SUPER ADMIN: SUSPEND CLIENT
         window.suspendClientAccount = function() {
             if(confirm('Peringatan: Apakah Anda yakin ingin memblokir klien ini? Mereka tidak akan bisa masuk ke sistem lagi.')) {
@@ -1502,7 +1530,7 @@
             if (tableBody) {
                 const newRow = document.createElement('tr');
                 newRow.className = "hover:bg-purple-50 cursor-pointer transition-colors";
-                newRow.onclick = () => openModal('modal-client-detail');
+                newRow.onclick = () => openClientDetail(compName, adminName, adminPhone, 'Setup Awal');
                 newRow.innerHTML = `
                     <td class="p-4">
                         <p class="font-bold text-slate-800">${compName}</p>
@@ -1531,7 +1559,7 @@
         // Menggunakan Firebase SDK v11.6.1 (ES Modules CDN)
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
         import { getAuth, signInAnonymously, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
-        import { getFirestore, collection, addDoc, onSnapshot, query, doc, updateDoc, deleteDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+        import { getFirestore, collection, addDoc, onSnapshot, query, doc, updateDoc, deleteDoc, getDocs } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
         // Konfigurasi Firebase ANDA
         const firebaseConfig = {
@@ -1604,6 +1632,75 @@
                     console.error(e);
                     showToast('Gagal menghapus order', 'error');
                 }
+            }
+        }
+
+        // FUNGSI EXPORT DATA DAN KONFIRMASI HAPUS DARI CLOUD
+        window.exportAndAskDelete = async function() {
+            if (!currentUser || !db) {
+                showToast('Fitur ini membutuhkan koneksi database aktif', 'error');
+                return;
+            }
+
+            showToast('Menyiapkan file untuk diunduh...', 'success');
+
+            try {
+                const ordersRef = collection(db, 'artifacts', appId, 'public', 'data', 'orders');
+                const snapshot = await getDocs(ordersRef);
+
+                if (snapshot.empty) {
+                    showToast('Tidak ada data untuk diekspor.', 'error');
+                    return;
+                }
+
+                // Siapkan header tabel CSV
+                let csvContent = "ID Invoice,Tanggal,Pelanggan,Telepon,Alamat,Merk AC,Kapasitas PK,Status\n";
+                let docIds = [];
+
+                // Ambil semua data dan ubah ke format CSV
+                snapshot.forEach(document => {
+                    const data = document.data();
+                    docIds.push(document.id);
+                    // Hilangkan koma bawaan di dalam teks agar tidak merusak kolom CSV
+                    const row = [
+                        `"${data.invoiceId || ''}"`,
+                        `"${new Date(data.createdAt).toLocaleDateString('id-ID')}"`,
+                        `"${data.customerName || ''}"`,
+                        `"${data.customerPhone || ''}"`,
+                        `"${data.customerAddress || ''}"`,
+                        `"${data.acBrand || ''}"`,
+                        `"${data.acPk || ''}"`,
+                        `"${data.status || ''}"`
+                    ].join(',');
+                    csvContent += row + "\n";
+                });
+
+                // Buat fungsi unduh (download) ke PC
+                const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+                const url = URL.createObjectURL(blob);
+                const link = document.createElement("a");
+                link.setAttribute("href", url);
+                link.setAttribute("download", `Data_Transaksi_Billingpro_${new Date().toISOString().split('T')[0]}.csv`);
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+
+                // Delay sedikit agar file sukses terunduh dahulu sebelum muncul alert konfirmasi
+                setTimeout(async () => {
+                    if(confirm('File Data Transaksi (CSV) berhasil diunduh ke komputer Anda.\n\nApakah Anda ingin MENGHAPUS SEMUA DATA INI dari Cloud secara permanen untuk mengosongkan memori? (Pilih "Cancel" jika ingin tetap menyimpannya di Cloud)')) {
+                        showToast('Sedang menghapus data dari cloud...', 'success');
+                        for (const id of docIds) {
+                            await deleteDoc(doc(db, 'artifacts', appId, 'public', 'data', 'orders', id));
+                        }
+                        showToast('Data cloud berhasil dibersihkan.', 'success');
+                    } else {
+                        showToast('Selesai. Data tetap dipertahankan di cloud.', 'success');
+                    }
+                }, 500);
+
+            } catch (error) {
+                console.error("Export Error: ", error);
+                showToast('Gagal mengekspor data.', 'error');
             }
         }
 
