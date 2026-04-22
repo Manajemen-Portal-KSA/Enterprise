@@ -180,6 +180,222 @@
 
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                         <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm flex items-center gap-4">
+                            <div class="w-14 h-14 rounded-xl bg-purple-100 flex items-center justify-center text-purple-600"><i data-lucide="building-2" class="w-7 h-7"></i></div>
+                            <div><p class="text-sm font-medium text-slate-500">Total Klien (Bengkel)</p><p class="text-2xl font-bold text-slate-800">45 Perusahaan</p></div>
+                        </div>
+                        <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm flex items-center gap-4">
+                            <div class="w-14 h-14 rounded-xl bg-blue-100 flex items-center justify-center text-blue-600"><i data-lucide="users" class="w-7 h-7"></i></div>
+                            <div><p class="text-sm font-medium text-slate-500">Total Teknisi Aktif</p><p class="text-2xl font-bold text-slate-800">128 Orang</p></div>
+                        </div>
+                        <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm flex items-center gap-4">
+                            <div class="w-14 h-14 rounded-xl bg-emerald-100 flex items-center justify-center text-emerald-600"><i data-lucide="wallet" class="w-7 h-7"></i></div>
+                            <div><p class="text-sm font-medium text-slate-500">Pendapatan Langganan</p><p class="text-2xl font-bold text-slate-800">Rp 15.500.000<span class="text-sm font-normal text-slate-500"> /bln</span></p></div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden mt-6">
+                        <div class="p-6 border-b border-slate-200 flex justify-between items-center bg-slate-50/50">
+                            <h3 class="font-bold text-slate-800">Daftar Klien (Perusahaan AC)</h3>
+                            <div class="relative">
+                                <i data-lucide="search" class="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"></i>
+                                <input type="text" placeholder="Cari nama klien..." class="pl-9 pr-4 py-1.5 bg-white border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-purple-500 focus:outline-none">
+                            </div>
+                        </div>
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-left border-collapse">
+                                <thead>
+                                    <tr class="bg-slate-50 border-b border-slate-200 text-xs uppercase tracking-wider text-slate-500">
+                                        <th class="p-4 font-semibold">Nama Bengkel AC</th>
+                                        <th class="p-4 font-semibold">Admin Pengelola</th>
+                                        <th class="p-4 font-semibold text-center">Jml Teknisi</th>
+                                        <th class="p-4 font-semibold">Status Langganan</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="sa-client-list-body" class="divide-y divide-slate-100 text-sm">
+                                    <tr class="hover:bg-purple-50 cursor-pointer transition-colors" onclick="openModal('modal-client-detail')">
+                                        <td class="p-4">
+                                            <p class="font-bold text-slate-800">PT Maju Jaya AC</p>
+                                            <p class="text-xs text-slate-500 mt-0.5">Jakarta Selatan</p>
+                                        </td>
+                                        <td class="p-4">
+                                            <p class="text-slate-800 font-medium">Budi Santoso</p>
+                                            <p class="text-xs text-slate-500 mt-0.5">0812-xxxx-xxxx</p>
+                                        </td>
+                                        <td class="p-4 text-center font-bold text-slate-700">6</td>
+                                        <td class="p-4"><span class="px-2 py-1 rounded-full text-xs font-medium bg-emerald-100 text-emerald-700 border border-emerald-200">Aktif (Lunas)</span></td>
+                                    </tr>
+                                    <tr class="hover:bg-purple-50 cursor-pointer transition-colors" onclick="openModal('modal-client-detail')">
+                                        <td class="p-4">
+                                            <p class="font-bold text-slate-800">Sinar Dingin AC</p>
+                                            <p class="text-xs text-slate-500 mt-0.5">Bandung Raya</p>
+                                        </td>
+                                        <td class="p-4">
+                                            <p class="text-slate-800 font-medium">Hendra Wijaya</p>
+                                            <p class="text-xs text-slate-500 mt-0.5">0856-xxxx-xxxx</p>
+                                        </td>
+                                        <td class="p-4 text-center font-bold text-slate-700">12</td>
+                                        <td class="p-4"><span class="px-2 py-1 rounded-full text-xs font-medium bg-red-100 text-red-700 border border-red-200">Menunggak (Blokir)</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="view-sa-billing" class="sa-view-section hidden space-y-6 fade-in">
+                    <h2 class="text-2xl font-bold text-slate-800 mb-6">Tagihan Sewa Aplikasi</h2>
+                    <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+                        <table class="w-full text-left border-collapse">
+                            <thead>
+                                <tr class="bg-slate-50 border-b border-slate-200 text-xs uppercase tracking-wider text-slate-500">
+                                    <th class="p-4 font-semibold">Nama Klien</th>
+                                    <th class="p-4 font-semibold">Paket Sewa</th>
+                                    <th class="p-4 font-semibold">Status</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-100 text-sm">
+                                <tr class="hover:bg-slate-50">
+                                    <td class="p-4 font-bold text-slate-800">PT Maju Jaya AC</td>
+                                    <td class="p-4 text-slate-600">Premium (Rp 350.000/bln)</td>
+                                    <td class="p-4"><span class="px-2 py-1 rounded-full text-xs font-medium bg-emerald-100 text-emerald-700">Lunas</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div id="view-sa-settings" class="sa-view-section hidden space-y-6 fade-in">
+                    <div class="flex justify-between items-end mb-6">
+                        <div>
+                            <h2 class="text-2xl font-bold text-slate-800">Pengaturan Sistem Utama</h2>
+                            <p class="text-slate-500 mt-1">Konfigurasi platform SaaS, paket langganan, dan integrasi.</p>
+                        </div>
+                        <button onclick="showToast('Pengaturan berhasil disimpan!', 'success')" class="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg font-medium flex items-center gap-2 shadow-sm transition-colors">
+                            <i data-lucide="save" class="w-5 h-5"></i> Simpan Perubahan
+                        </button>
+                    </div>
+
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-6">
+                            <h3 class="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2"><i data-lucide="layout-template" class="w-5 h-5 text-purple-600"></i> Identitas Platform</h3>
+                            <div class="space-y-4">
+                                <div>
+                                    <label class="block text-sm font-semibold text-slate-700 mb-1">Nama Aplikasi SaaS</label>
+                                    <input type="text" value="Billingpro Enterprise" class="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-purple-500 focus:outline-none text-sm">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-semibold text-slate-700 mb-1">Nomor WA Bantuan (Untuk Klien)</label>
+                                    <input type="text" value="0812-9999-8888" class="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-purple-500 focus:outline-none text-sm">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-6">
+                            <h3 class="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2"><i data-lucide="tags" class="w-5 h-5 text-purple-600"></i> Harga Paket Langganan</h3>
+                            <div class="space-y-3">
+                                <div class="border border-slate-200 rounded-xl p-3.5 flex justify-between items-center bg-slate-50">
+                                    <div><p class="font-bold text-slate-800 text-sm">Paket Standard</p></div>
+                                    <span class="font-bold text-purple-700 text-sm">Rp 150.000</span>
+                                </div>
+                                <div class="border border-slate-200 rounded-xl p-3.5 flex justify-between items-center bg-slate-50">
+                                    <div><p class="font-bold text-slate-800 text-sm">Paket Premium</p></div>
+                                    <span class="font-bold text-purple-700 text-sm">Rp 350.000</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- VIEW 1: ADMIN DASHBOARD (KLIEN/BENGKEL)    -->
+    <!-- ========================================== -->
+    <div id="app-admin" class="hidden h-screen w-full fade-in pt-0">
+        <aside class="w-64 bg-slate-900 text-slate-300 flex flex-col shadow-xl flex-shrink-0 relative z-20">
+            <div class="p-6 border-b border-slate-800">
+                <div class="flex items-center gap-3">
+                    <div class="bg-blue-500 p-2.5 rounded-xl shrink-0">
+                        <i data-lucide="wrench" class="w-6 h-6 text-white"></i>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <h1 class="text-xl font-bold text-white tracking-tight truncate">Billingpro<span class="text-blue-400">.</span></h1>
+                        <p class="text-xs text-slate-400 truncate">Enterprise AC Service</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="p-4 border-b border-slate-800 bg-slate-800/50">
+                <p class="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">Perusahaan Aktif</p>
+                <div class="flex items-center gap-3">
+                    <i data-lucide="building-2" class="w-5 h-5 text-blue-400"></i>
+                    <div class="flex-1 truncate">
+                        <p class="text-sm font-medium text-white truncate">PT Maju Jaya AC</p>
+                        <p class="text-xs text-slate-400 truncate">Admin: Budi Santoso</p>
+                    </div>
+                </div>
+            </div>
+
+            <nav class="flex-1 p-4 space-y-1 overflow-y-auto">
+                <button onclick="switchAdminTab('dashboard')" id="btn-dashboard" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all bg-blue-600 text-white shadow-md admin-menu-btn">
+                    <i data-lucide="layout-dashboard" class="w-5 h-5"></i>
+                    <span class="font-medium">Dashboard</span>
+                </button>
+                <button onclick="switchAdminTab('technicians')" id="btn-technicians" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all hover:bg-slate-800 hover:text-white admin-menu-btn">
+                    <i data-lucide="users" class="w-5 h-5"></i>
+                    <span class="font-medium">Teknisi (HRD)</span>
+                </button>
+                <button onclick="switchAdminTab('chat')" id="btn-chat" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all hover:bg-slate-800 hover:text-white admin-menu-btn relative">
+                    <i data-lucide="message-square" class="w-5 h-5"></i>
+                    <span class="font-medium">Chat & Pesan</span>
+                    <span class="absolute right-4 w-5 h-5 bg-red-500 text-white text-[10px] font-bold rounded-full flex items-center justify-center">1</span>
+                </button>
+                <button onclick="switchAdminTab('billing')" id="btn-billing" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all hover:bg-slate-800 hover:text-white admin-menu-btn">
+                    <i data-lucide="file-text" class="w-5 h-5"></i>
+                    <span class="font-medium">Order & Billing</span>
+                </button>
+            </nav>
+
+            <div class="p-4 border-t border-slate-800">
+                <button onclick="processLogout()" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-red-400 hover:bg-red-400/10 transition-all">
+                    <i data-lucide="log-out" class="w-5 h-5"></i>
+                    <span class="font-medium">Keluar (Logout)</span>
+                </button>
+            </div>
+        </aside>
+
+        <main class="flex-1 flex flex-col h-full overflow-hidden bg-slate-50">
+            <header class="bg-white border-b border-slate-200 px-8 py-4 flex items-center justify-between sticky top-0 z-10">
+                <div class="relative w-96">
+                    <i data-lucide="search" class="w-5 h-5 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"></i>
+                    <input type="text" placeholder="Cari order, pelanggan..." class="w-full pl-10 pr-4 py-2 bg-slate-50 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                </div>
+                <div class="flex items-center gap-4">
+                    <div class="text-right">
+                        <p class="text-sm font-bold text-slate-700">Budi Santoso</p>
+                        <p class="text-xs text-slate-500">Administrator Perusahaan</p>
+                    </div>
+                    <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-700 font-bold border-2 border-blue-200">BS</div>
+                </div>
+            </header>
+
+            <div class="flex-1 overflow-auto p-8 relative">
+                
+                <!-- TAB: DASHBOARD ADMIN -->
+                <div id="view-dashboard" class="admin-view-section block space-y-6 fade-in">
+                    <div class="flex justify-between items-end mb-6">
+                        <div>
+                            <h2 class="text-2xl font-bold text-slate-800">Dashboard Operasional</h2>
+                            <p class="text-slate-500 mt-1">Ringkasan aktivitas PT Maju Jaya AC hari ini.</p>
+                        </div>
+                        <button onclick="openModal('modal-add-order')" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium flex items-center gap-2 shadow-sm transition-colors">
+                            <i data-lucide="plus" class="w-5 h-5"></i> Buat Order Baru
+                        </button>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm flex items-center gap-4">
                             <div class="w-14 h-14 rounded-xl bg-emerald-100 flex items-center justify-center text-emerald-600"><i data-lucide="credit-card" class="w-7 h-7"></i></div>
                             <div><p class="text-sm font-medium text-slate-500">Pendapatan Hari Ini</p><p class="text-2xl font-bold text-slate-800">Rp 750.000</p></div>
                         </div>
@@ -200,19 +416,19 @@
                                 <button onclick="switchAdminTab('billing')" class="text-blue-600 text-sm font-medium hover:underline">Lihat Semua</button>
                             </div>
                             <div class="overflow-x-auto">
-                            <table class="w-full text-left border-collapse">
-                                <thead>
-                                    <tr class="bg-slate-50 border-b border-slate-200 text-xs uppercase tracking-wider text-slate-500">
-                                        <th class="p-4 font-semibold">Nama Bengkel AC</th>
-                                        <th class="p-4 font-semibold">Admin Pengelola</th>
-                                        <th class="p-4 font-semibold text-center">Jml Teknisi</th>
-                                        <th class="p-4 font-semibold">Status Langganan</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="sa-client-list-body" class="divide-y divide-slate-100 text-sm">
-                                    <tr class="hover:bg-purple-50 cursor-pointer transition-colors" onclick="openModal('modal-client-detail')">
-                                        <td class="p-4">
-                                            <p class="font-bold text-slate-800">PT Maju Jaya AC</p>
+                                <table class="w-full text-left border-collapse">
+                                    <thead>
+                                        <tr class="bg-slate-50 border-b border-slate-200 text-xs uppercase tracking-wider text-slate-500">
+                                            <th class="p-4 font-semibold">Pelanggan & AC</th>
+                                            <th class="p-4 font-semibold">Layanan</th>
+                                            <th class="p-4 font-semibold">Status</th>
+                                            <th class="p-4 font-semibold text-right">Aksi</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="recent-orders-body" class="divide-y divide-slate-100 text-sm">
+                                        <tr><td colspan="4" class="p-4 text-center text-slate-400">Memuat data pesanan...</td></tr>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
 
@@ -247,6 +463,7 @@
                     </div>
                 </div>
 
+                <!-- TAB: TEKNISI ADMIN (HRD) -->
                 <div id="view-technicians" class="admin-view-section hidden fade-in">
                     <h2 class="text-2xl font-bold text-slate-800 mb-6">Manajemen Teknisi (HRD)</h2>
                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -270,6 +487,7 @@
                     </div>
                 </div>
 
+                <!-- TAB: ORDER & BILLING (TABEL KOMPREHENSIF) -->
                 <div id="view-billing" class="admin-view-section hidden space-y-6 fade-in">
                     <div class="flex justify-between items-end mb-6">
                         <div>
@@ -321,6 +539,7 @@
                     </div>
                 </div>
 
+                <!-- TAB: CHAT ADMIN -->
                 <div id="view-chat" class="admin-view-section hidden fade-in h-[calc(100vh-140px)]">
                     <h2 class="text-2xl font-bold text-slate-800 mb-6">Chat & Pesan Teknisi</h2>
                     <div class="flex h-full bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
@@ -532,7 +751,7 @@
                 <h3 class="text-lg font-bold text-slate-800 flex items-center gap-2">
                     <i data-lucide="plus-circle" class="w-5 h-5 text-blue-600"></i> Buat Order Baru
                 </h3>
-                <button onclick="closeModal('modal-add-order')" class="text-slate-400 hover:text-red-500 transition-colors"><i data-lucide="x" class="w-6 h-6"></i></button>
+                <button type="button" onclick="closeModal('modal-add-order')" class="text-slate-400 hover:text-red-500 transition-colors"><i data-lucide="x" class="w-6 h-6"></i></button>
             </div>
             
             <div class="p-6 overflow-y-auto flex-1 bg-white">
@@ -650,8 +869,8 @@
                 </form>
             </div>
             <div class="px-6 py-4 border-t border-slate-200 bg-slate-50 flex justify-end gap-3 shrink-0">
-                <button onclick="closeModal('modal-add-order')" class="px-5 py-2.5 text-sm font-bold text-slate-600 hover:bg-slate-200 rounded-xl transition-colors">Batal</button>
-                <button onclick="submitNewOrderToFirebase()" class="px-5 py-2.5 text-sm font-bold text-white bg-blue-600 hover:bg-blue-700 rounded-xl transition-colors shadow-md flex items-center gap-2">
+                <button type="button" onclick="closeModal('modal-add-order')" class="px-5 py-2.5 text-sm font-bold text-slate-600 hover:bg-slate-200 rounded-xl transition-colors">Batal</button>
+                <button type="button" onclick="submitNewOrderToFirebase()" class="px-5 py-2.5 text-sm font-bold text-white bg-blue-600 hover:bg-blue-700 rounded-xl transition-colors shadow-md flex items-center gap-2">
                     <i data-lucide="send" class="w-4 h-4"></i> Simpan ke Database
                 </button>
             </div>
@@ -665,13 +884,15 @@
                 <h3 class="text-lg font-bold text-slate-800 flex items-center gap-2">
                     <i data-lucide="user-cog" class="w-5 h-5 text-blue-600"></i> Data Lengkap Teknisi (HRD)
                 </h3>
-                <button onclick="closeModal('modal-tech-detail')" class="text-slate-400 hover:text-red-500 transition-colors"><i data-lucide="x" class="w-6 h-6"></i></button>
+                <button type="button" onclick="closeModal('modal-tech-detail')" class="text-slate-400 hover:text-red-500 transition-colors"><i data-lucide="x" class="w-6 h-6"></i></button>
             </div>
             <div class="p-6 overflow-y-auto flex-1 bg-slate-50">
                 <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                    
+                    <!-- Kiri: Profil & Kehadiran -->
                     <div class="space-y-6">
                         <div class="bg-white p-5 rounded-2xl border border-slate-200 text-center shadow-sm relative">
-                            <button class="absolute top-3 right-3 text-slate-400 hover:text-blue-600" title="Edit Profil"><i data-lucide="edit" class="w-4 h-4"></i></button>
+                            <button type="button" class="absolute top-3 right-3 text-slate-400 hover:text-blue-600" title="Edit Profil"><i data-lucide="edit" class="w-4 h-4"></i></button>
                             <div class="w-24 h-24 rounded-full bg-slate-100 mx-auto flex items-center justify-center font-bold text-3xl text-slate-600 mb-3 border-4 border-slate-50 shadow-sm relative">
                                 AP
                                 <span class="absolute bottom-0 right-1 w-5 h-5 bg-green-500 border-2 border-white rounded-full"></span>
@@ -710,6 +931,7 @@
                         </div>
                     </div>
 
+                    <!-- Kanan: Keuangan, Riwayat, Tracking, Alat -->
                     <div class="lg:col-span-2 space-y-6">
                         <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm">
                             <div class="flex justify-between items-center mb-4">
@@ -727,7 +949,7 @@
                                 </div>
                             </div>
                             <div class="mt-4 flex gap-3">
-                                <button class="flex-1 bg-slate-800 hover:bg-slate-900 text-white font-bold py-2.5 rounded-xl text-sm transition-colors shadow-sm">Cairkan Komisi</button>
+                                <button type="button" class="flex-1 bg-slate-800 hover:bg-slate-900 text-white font-bold py-2.5 rounded-xl text-sm transition-colors shadow-sm">Cairkan Komisi</button>
                             </div>
                         </div>
 
@@ -767,7 +989,7 @@
                                     <h5 class="text-xs font-bold text-blue-800 uppercase tracking-wider mb-2 relative z-10 w-full text-left">Live Tracking (GPS)</h5>
                                     <i data-lucide="map-pin" class="w-8 h-8 text-red-500 mb-1 relative z-10 group-hover:scale-110 transition-transform"></i>
                                     <p class="text-[10px] text-slate-600 relative z-10 mb-2">Lokasi Terkini: Jl. Merdeka No 10</p>
-                                    <button class="bg-white px-3 py-1.5 rounded-lg text-xs font-bold text-blue-600 shadow-sm relative z-10 group-hover:bg-blue-50 transition-colors">Buka Peta Live</button>
+                                    <button type="button" class="bg-white px-3 py-1.5 rounded-lg text-xs font-bold text-blue-600 shadow-sm relative z-10 group-hover:bg-blue-50 transition-colors">Buka Peta Live</button>
                                 </div>
                             </div>
                         </div>
@@ -782,7 +1004,7 @@
         <div class="bg-white rounded-t-3xl sm:rounded-3xl w-full max-w-[400px] shadow-2xl modal-enter overflow-hidden flex flex-col max-h-[90vh]">
             <div class="px-5 py-4 border-b border-slate-200 bg-blue-600 text-white flex justify-between items-center">
                 <h3 class="text-base font-bold flex items-center gap-2"><i data-lucide="clipboard-check" class="w-5 h-5"></i> Laporan Pekerjaan</h3>
-                <button onclick="closeModal('modal-tech-input')" class="text-blue-200 hover:text-white transition-colors bg-blue-700 rounded-full p-1"><i data-lucide="x" class="w-5 h-5"></i></button>
+                <button type="button" onclick="closeModal('modal-tech-input')" class="text-blue-200 hover:text-white transition-colors bg-blue-700 rounded-full p-1"><i data-lucide="x" class="w-5 h-5"></i></button>
             </div>
             
             <div class="p-5 overflow-y-auto flex-1 bg-slate-50">
@@ -835,7 +1057,7 @@
                 </form>
             </div>
             <div class="p-4 border-t border-slate-200 bg-white">
-                <button onclick="closeModal('modal-tech-input'); showToast('Laporan pekerjaan berhasil dikirim ke Admin.', 'success')" class="w-full py-3.5 bg-emerald-500 hover:bg-emerald-600 text-white font-bold rounded-xl text-sm shadow-lg flex items-center justify-center gap-2">
+                <button type="button" onclick="closeModal('modal-tech-input'); showToast('Laporan pekerjaan berhasil dikirim ke Admin.', 'success')" class="w-full py-3.5 bg-emerald-500 hover:bg-emerald-600 text-white font-bold rounded-xl text-sm shadow-lg flex items-center justify-center gap-2">
                     <i data-lucide="check-circle" class="w-5 h-5"></i> Selesaikan Job Ini
                 </button>
             </div>
@@ -845,7 +1067,7 @@
     <!-- 4. MODAL ADMIN: CETAK INVOICE -->
     <div id="modal-invoice" class="fixed inset-0 z-[300] bg-slate-900/60 hidden items-center justify-center backdrop-blur-sm transition-all p-4">
         <div class="bg-white rounded-xl w-full max-w-lg shadow-2xl modal-enter relative">
-            <button onclick="closeModal('modal-invoice')" class="absolute top-4 right-4 text-slate-400 hover:text-slate-700 bg-slate-100 rounded-full p-1"><i data-lucide="x" class="w-5 h-5"></i></button>
+            <button type="button" onclick="closeModal('modal-invoice')" class="absolute top-4 right-4 text-slate-400 hover:text-slate-700 bg-slate-100 rounded-full p-1"><i data-lucide="x" class="w-5 h-5"></i></button>
             
             <div class="p-8">
                 <div class="flex items-center gap-3 mb-6 border-b border-dashed border-slate-300 pb-6">
@@ -900,10 +1122,10 @@
             </div>
             
             <div class="bg-slate-50 p-4 rounded-b-xl border-t border-slate-200 flex justify-between gap-3">
-                <button class="flex-1 bg-green-500 hover:bg-green-600 text-white font-bold py-2.5 rounded-lg text-sm flex items-center justify-center gap-2 transition-colors shadow-sm">
+                <button type="button" class="flex-1 bg-green-500 hover:bg-green-600 text-white font-bold py-2.5 rounded-lg text-sm flex items-center justify-center gap-2 transition-colors shadow-sm">
                     <i data-lucide="message-circle" class="w-4 h-4"></i> Kirim WhatsApp
                 </button>
-                <button onclick="window.print()" class="flex-1 bg-slate-800 hover:bg-slate-900 text-white font-bold py-2.5 rounded-lg text-sm flex items-center justify-center gap-2 transition-colors shadow-sm">
+                <button type="button" onclick="window.print()" class="flex-1 bg-slate-800 hover:bg-slate-900 text-white font-bold py-2.5 rounded-lg text-sm flex items-center justify-center gap-2 transition-colors shadow-sm">
                     <i data-lucide="printer" class="w-4 h-4"></i> Cetak / PDF
                 </button>
             </div>
@@ -917,7 +1139,7 @@
                 <h3 class="text-lg font-bold text-purple-900 flex items-center gap-2">
                     <i data-lucide="building" class="w-5 h-5 text-purple-600"></i> Detail Klien (SaaS)
                 </h3>
-                <button onclick="closeModal('modal-client-detail')" class="text-slate-400 hover:text-red-500 transition-colors"><i data-lucide="x" class="w-6 h-6"></i></button>
+                <button type="button" onclick="closeModal('modal-client-detail')" class="text-slate-400 hover:text-red-500 transition-colors"><i data-lucide="x" class="w-6 h-6"></i></button>
             </div>
             
             <div class="p-6 overflow-y-auto flex-1 bg-slate-50">
@@ -936,14 +1158,14 @@
                     <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-4">
                         <h5 class="text-xs font-bold text-slate-400 uppercase tracking-wider border-b border-slate-100 pb-2">Informasi Kontak</h5>
                         <div><p class="text-[10px] text-slate-500 uppercase">Admin Pengelola</p><p class="font-bold text-slate-800">Budi Santoso</p></div>
-                        <div><p class="text-[10px] text-slate-500 uppercase">No. WhatsApp</p><p class="font-bold text-slate-800 flex items-center gap-2">0812-3456-7890 <button class="text-emerald-500 hover:text-emerald-600"><i data-lucide="message-circle" class="w-4 h-4"></i></button></p></div>
+                        <div><p class="text-[10px] text-slate-500 uppercase">No. WhatsApp</p><p class="font-bold text-slate-800 flex items-center gap-2">0812-3456-7890 <button type="button" class="text-emerald-500 hover:text-emerald-600"><i data-lucide="message-circle" class="w-4 h-4"></i></button></p></div>
                         <div><p class="text-[10px] text-slate-500 uppercase">Alamat Perusahaan</p><p class="font-medium text-slate-700 text-sm">Jl. Suka Maju No. 99, Jakarta</p></div>
                     </div>
                     <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-4">
                         <h5 class="text-xs font-bold text-slate-400 uppercase tracking-wider border-b border-slate-100 pb-2">Langganan & Tagihan</h5>
                         <div><p class="text-[10px] text-slate-500 uppercase">Paket Saat Ini</p><p class="font-bold text-purple-700 text-lg">Premium</p></div>
                         <div><p class="text-[10px] text-slate-500 uppercase">Jatuh Tempo Berikutnya</p><p class="font-bold text-slate-800">15 Nov 2023</p></div>
-                        <button class="w-full mt-2 py-2 bg-purple-50 text-purple-700 hover:bg-purple-100 font-bold rounded-xl text-xs flex items-center justify-center gap-2 border border-purple-200 transition-colors"><i data-lucide="receipt" class="w-4 h-4"></i> Kirim Invoice via WA</button>
+                        <button type="button" class="w-full mt-2 py-2 bg-purple-50 text-purple-700 hover:bg-purple-100 font-bold rounded-xl text-xs flex items-center justify-center gap-2 border border-purple-200 transition-colors"><i data-lucide="receipt" class="w-4 h-4"></i> Kirim Invoice via WA</button>
                     </div>
                     <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-4">
                         <h5 class="text-xs font-bold text-slate-400 uppercase tracking-wider border-b border-slate-100 pb-2">Statistik Penggunaan</h5>
@@ -954,11 +1176,11 @@
             </div>
 
             <div class="px-6 py-4 border-t border-slate-200 bg-white flex justify-between items-center shrink-0">
-                <button class="text-red-500 hover:bg-red-50 px-4 py-2 rounded-xl text-sm font-bold transition-colors flex items-center gap-2">
+                <button type="button" class="text-red-500 hover:bg-red-50 px-4 py-2 rounded-xl text-sm font-bold transition-colors flex items-center gap-2">
                     <i data-lucide="alert-triangle" class="w-4 h-4"></i> Suspend / Blokir
                 </button>
                 <div class="flex gap-3">
-                    <button onclick="closeModal('modal-client-detail')" class="px-6 py-2 bg-slate-800 hover:bg-slate-900 text-white font-bold rounded-xl text-sm transition-colors shadow-md">Tutup Panel</button>
+                    <button type="button" onclick="closeModal('modal-client-detail')" class="px-6 py-2 bg-slate-800 hover:bg-slate-900 text-white font-bold rounded-xl text-sm transition-colors shadow-md">Tutup Panel</button>
                 </div>
             </div>
         </div>
@@ -971,7 +1193,7 @@
                 <h3 class="text-lg font-bold text-slate-800 flex items-center gap-2">
                     <i data-lucide="user-plus" class="w-5 h-5 text-blue-600"></i> Tambah Teknisi Baru
                 </h3>
-                <button onclick="closeModal('modal-add-tech')" class="text-slate-400 hover:text-red-500 transition-colors"><i data-lucide="x" class="w-6 h-6"></i></button>
+                <button type="button" onclick="closeModal('modal-add-tech')" class="text-slate-400 hover:text-red-500 transition-colors"><i data-lucide="x" class="w-6 h-6"></i></button>
             </div>
             
             <div class="p-6 overflow-y-auto flex-1 bg-white">
@@ -1003,8 +1225,8 @@
                 </form>
             </div>
             <div class="px-6 py-4 border-t border-slate-200 bg-slate-50 flex justify-end gap-3 shrink-0">
-                <button onclick="closeModal('modal-add-tech')" class="px-5 py-2.5 text-sm font-bold text-slate-600 hover:bg-slate-200 rounded-xl transition-colors">Batal</button>
-                <button onclick="closeModal('modal-add-tech'); showToast('Teknisi berhasil ditambahkan!', 'success')" class="px-5 py-2.5 text-sm font-bold text-white bg-blue-600 hover:bg-blue-700 rounded-xl transition-colors shadow-md flex items-center gap-2">
+                <button type="button" onclick="closeModal('modal-add-tech')" class="px-5 py-2.5 text-sm font-bold text-slate-600 hover:bg-slate-200 rounded-xl transition-colors">Batal</button>
+                <button type="button" onclick="closeModal('modal-add-tech'); showToast('Teknisi berhasil ditambahkan!', 'success')" class="px-5 py-2.5 text-sm font-bold text-white bg-blue-600 hover:bg-blue-700 rounded-xl transition-colors shadow-md flex items-center gap-2">
                     <i data-lucide="save" class="w-4 h-4"></i> Simpan Data
                 </button>
             </div>
@@ -1018,7 +1240,7 @@
                 <h3 class="text-lg font-bold text-purple-900 flex items-center gap-2">
                     <i data-lucide="building-2" class="w-5 h-5 text-purple-600"></i> Setup Klien & Admin Baru
                 </h3>
-                <button onclick="closeModal('modal-sa-add-client')" class="text-slate-400 hover:text-red-500 transition-colors"><i data-lucide="x" class="w-6 h-6"></i></button>
+                <button type="button" onclick="closeModal('modal-sa-add-client')" class="text-slate-400 hover:text-red-500 transition-colors"><i data-lucide="x" class="w-6 h-6"></i></button>
             </div>
             <div class="p-6 overflow-y-auto flex-1 bg-slate-50">
                 <form id="form-add-client" class="space-y-6">
@@ -1069,8 +1291,8 @@
                 </form>
             </div>
             <div class="px-6 py-4 border-t border-slate-200 bg-white flex justify-end gap-3 shrink-0">
-                <button onclick="closeModal('modal-sa-add-client')" class="px-5 py-2.5 text-sm font-bold text-slate-600 hover:bg-slate-100 rounded-xl transition-colors">Batal</button>
-                <button onclick="registerNewClient()" class="px-5 py-2.5 text-sm font-bold text-white bg-purple-600 hover:bg-purple-700 rounded-xl transition-colors shadow-md flex items-center gap-2">
+                <button type="button" onclick="closeModal('modal-sa-add-client')" class="px-5 py-2.5 text-sm font-bold text-slate-600 hover:bg-slate-100 rounded-xl transition-colors">Batal</button>
+                <button type="button" onclick="registerNewClient()" class="px-5 py-2.5 text-sm font-bold text-white bg-purple-600 hover:bg-purple-700 rounded-xl transition-colors shadow-md flex items-center gap-2">
                     <i data-lucide="check-circle" class="w-4 h-4"></i> Simpan & Daftarkan
                 </button>
             </div>
@@ -1471,11 +1693,11 @@
 
                     let actionButtons = `
                         <div class="flex justify-center gap-2">
-                            <button class="p-1.5 text-slate-400 hover:text-blue-600 bg-white border border-slate-200 rounded shadow-sm" title="Tugaskan Teknisi"><i data-lucide="user-plus" class="w-4 h-4"></i></button>
+                            <button type="button" class="p-1.5 text-slate-400 hover:text-blue-600 bg-white border border-slate-200 rounded shadow-sm" title="Tugaskan Teknisi"><i data-lucide="user-plus" class="w-4 h-4"></i></button>
                     `;
                     // Jika belum dibatalkan dan belum selesai, tampilkan opsi Cancel Order
                     if (data.status !== 'Selesai' && data.status !== 'Dibatalkan') {
-                        actionButtons += `<button onclick="cancelOrder('${doc.id}')" class="p-1.5 text-slate-400 hover:text-red-500 bg-white border border-slate-200 rounded shadow-sm" title="Batalkan Order"><i data-lucide="x-circle" class="w-4 h-4"></i></button>`;
+                        actionButtons += `<button type="button" onclick="cancelOrder('${doc.id}')" class="p-1.5 text-slate-400 hover:text-red-500 bg-white border border-slate-200 rounded shadow-sm" title="Batalkan Order"><i data-lucide="x-circle" class="w-4 h-4"></i></button>`;
                     }
                     actionButtons += `</div>`;
 
